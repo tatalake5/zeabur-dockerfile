@@ -1,6 +1,9 @@
 # 使用最新的 Ubuntu 镜像
 FROM ubuntu:latest
 
+# 新增：设置环境变量，避免 apt-get 在安装过程中进行交互式提问
+ENV DEBIAN_FRONTEND=noninteractive
+
 # 更新软件包列表并安装 openssh-server
 RUN apt-get update && apt-get install -y openssh-server
 
@@ -8,7 +11,7 @@ RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
 # 设置 root 用户的密码（请务必修改为一个更安全的密码）
-RUN echo 'root:Kj#8mP2w!xQ1' | chpasswd
+RUN echo 'root:your_very_strong_password' | chpasswd
 
 # 允许 root 用户通过 SSH 登录
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
