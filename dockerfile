@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 
 # 设置 root 用户的密码（请务必修改为一个更安全的密码）
-RUN echo 'root:your_very_strong_password' | chpasswd
+RUN echo 'root:zuoxi1zh' | chpasswd
 
 # 允许 root 用户通过 SSH 登录
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
